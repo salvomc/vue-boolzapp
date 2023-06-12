@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(180deg, #009688 15%, #D9DBD4 15%);
+}
+
+.main_container{
+    height: 90%;
+    width: 80%;
+    top: 50px;
+    right: 150px;
+    position: absolute;
+    background-color: red;
+}
+
