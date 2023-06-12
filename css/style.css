@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -15,7 +15,59 @@ body{
     width: 80%;
     top: 50px;
     right: 150px;
+    display: flex;
     position: absolute;
-    background-color: red;
 }
 
+.left-container{
+    height: 100%;
+    width: 40%;
+    background-color: white;
+}
+
+.user_bar{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EAEAEA;
+}
+
+
+.notifications_bar{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #8EDAFC;
+}
+
+.search_bar{
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color:#FAFAFA;
+}
+
+.right-container{
+    height: 100%;
+    width: 60%;
+}
+
+.message_container{
+    height: calc(100% - 120px);
+    width: 100%;
+    background-image: url(../img/mine.jpg);
+    background-size: contain;
+}
+
+.send_msg_bar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F3EEE9;
+}
