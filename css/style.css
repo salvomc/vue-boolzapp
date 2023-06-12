@@ -7,6 +7,7 @@
 body{
     height: 100vh;
     display: flex;
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(180deg, #009688 15%, #D9DBD4 15%);
 }
 
@@ -19,29 +20,93 @@ body{
     position: absolute;
 }
 
+/* left_container */
+
 .left-container{
     height: 100%;
     width: 40%;
     background-color: white;
 }
 
+/* user_bar */
+
 .user_bar{
     height: 70px;
     width: 100%;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #EAEAEA;
 }
 
+.user_img {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.user_img p {
+    margin-left: 5px;
+    font-size: 15px;
+    color: black;
+}
+
+.user_bar .user_img img {
+    height: 50px;
+    border-radius: 40px;
+}
+
+.icons_right {
+    width: 30%;
+    text-align: right;
+}
+
+.icons_right i {
+    padding: 9px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #B1B1B1;
+}
+
+.icons_right i:hover {
+    color: #6B7376;
+}
+
+/* notifications_bar */
 
 .notifications_bar{
-    height: 70px;
+    height: 80px;
     width: 100%;
     display: flex;
     align-items: center;
     background-color: #8EDAFC;
 }
+
+.notifications_bell{
+    padding: 10px;
+    margin-left: 18px;
+    font-size: 23px;
+    border-radius: 40px;
+    color: #8edafc;
+    background-color: white;
+}
+
+.notifications_text {
+    margin-left: 10px;
+}
+
+.notifications_text p {
+    font-size: 13px;
+    color: black;
+}
+.notifications_text a {
+    font-size: 12px;
+    color: gray;
+}
+
+/* search_bar */
 
 .search_bar{
     height: 45px;
@@ -51,7 +116,96 @@ body{
     background-color:#FAFAFA;
 }
 
-.right-container{
+.search_bar i{
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #B1B1B1;
+}
+
+.search_bar i:hover{
+    color: #6B7376;
+}
+
+.search_input{
+    height: 70%;
+    width: 100%;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid white;
+    
+}
+
+/* contacts_area */
+
+.contacts{
+    height: calc(100% - 194px);
+    width: 100%;
+}
+
+.overflow{
+    overflow-y: scroll;
+}
+
+.contact_box{
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #E8EBEB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: white;
+}
+
+.contact_box:hover{
+    background-color: #E8EBEB;
+}
+
+.contact_box_img{
+    display: flex;
+    align-items: center;
+}
+
+.contact_box_img img{
+    height: 50px;
+    border-radius: 40px;
+}
+
+.contact_box_name{
+    bottom: 10px;
+    margin-left: 8px;
+    position: relative;
+}
+ .contact_box_name p{
+    margin-top: 9px;
+    margin-left: 5px;
+    font-size: 14px;
+    color: black;
+ }
+
+ .contact_box_name span{
+    margin-left: 5px;
+    font-size: 12px;
+    color: #9C9D9D;
+ }
+
+ .date{
+    bottom: 25px;
+    text-align: right;
+    position: relative;
+ }
+
+ .date span{
+    font-size: 10px;
+    color: #9C9D9D;
+}
+
+/* right_container */
+
+.right_container{
     height: 100%;
     width: 60%;
 }
