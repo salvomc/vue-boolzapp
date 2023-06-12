@@ -168,16 +168,53 @@ createApp({
             ],
             
             selectedContact : 0,
-            
+            send_message:'',
         }
        
     },
 
     methods: {
         
-        selectContact(index){
-            this.selectedContact = index;
+        selectContact(index)    
+        {
+            this.selectedContact = index,
             console.log(index);  
+        },
+
+        autoAnswer()
+        {
+            setTimeout(()=>
+            {
+                obj = 
+                {
+                    date: '',
+                    message: 'ok',
+                    status:'received',
+                }
+                  this.contacts[this.selectedContact].messages.push(obj)
+            },12500)
+        },
+
+        sendMessage()
+        {
+            let obj =
+            {
+                date: '',
+                message: this.send_message,
+                status:'sent',
+            }
+                this.contacts[this.selectedContact].messages.push(obj),
+                this.send_message='';
+                setTimeout(()=>
+                {
+                    obj = 
+                    {
+                        date: '',
+                        message: 'ok',
+                        status:'received'
+                    }
+                      this.contacts[this.selectedContact].messages.push(obj)
+                },1000)
         },
 
     },
