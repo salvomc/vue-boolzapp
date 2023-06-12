@@ -40,12 +40,12 @@
                         <input class="search_input" type="text" placeholder="Cerca o inizia una nuova chat">
                     </div>
                     <div class="contacts overflow">
-                        <div v-for="contact, index in contacts" class="contact_box">
+                        <div v-for="(contact, index) in contacts" @click="selectContact(index)" class="contact_box">
                             <div class="contact_box_img">
                                 <img :src="contacts[index].avatar" alt="contact-avatar">
                                 <div class="contact_box_name">
-                                    <p>{{ contact.name }}</p>
-                                    <span>Tutto fatto!...</span>
+                                    <p>{{contacts[index].name}}</p>
+                                    <span>Ultimo messaggio inviato</span>
                                 </div>
                             </div>
                             <div class="date">
@@ -58,10 +58,10 @@
                     <div class="user_bar">
                         <div class="user">
                             <div class="user_img">
-                                <img src="img/avatar_1.jpg" alt="chat-contact-avatar">
+                                <img :src="contacts[selectedContact].avatar" alt="">
                                 <div class="chat_contact">
-                                    <div id="contact_name">Michele</div>
-                                    <div id="last_seen">Ultimo accesso oggi alle 12:00</div>
+                                    <span id="contact_name">{{contacts[selectedContact].name}}</span>
+                                    <span id="last_seen">Ultimo accesso oggi alle 12:00</span>
                                 </div>
                             </div>
                         </div>
@@ -72,21 +72,10 @@
                         </div>
                     </div>
                     <div class="message_container">
-                        <div class="message fixed_msg first_msg">
-                            <div class="sent">
-                                <p>Tutto fatto!</p>
-                                <span>12:00</span>
-                            </div>
-                            <div class="message fixed_msg">
-                                <div class="sent">
-                                    <p>Tutto fatto!</p>
-                                    <span>12:00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="message fixed_msg">
-                            <div class="received">
-                                <p>Tutto fatto!</p>
+                        <div class="message first_msg">
+                            <div v-for="(message, index) in contacts[selectedContact].messages" class="fixed_msg" :class="contacts[selectedContact].messages[index].status === 'received' ? '': 'justify_content_end'">
+                                <div :class="contacts[selectedContact].messages[index].status === 'received' ? 'received':'sent'">
+                                <p>{{contacts[selectedContact].messages[index].message}}</p>
                                 <span>12:00</span>
                             </div>
                         </div>
