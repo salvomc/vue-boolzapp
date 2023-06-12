@@ -40,6 +40,10 @@ body{
     background-color: #EAEAEA;
 }
 
+.user_bar_margin{
+    border-right: 1px solid #D7D7D7;
+}
+
 .user_img {
     height: 100%;
     width: 70%;
@@ -131,10 +135,10 @@ body{
 .search_input{
     height: 70%;
     width: 100%;
+    padding-left: 10px;
     margin: 5px;
     border-radius: 5px;
     border: 1px solid white;
-    
 }
 
 /* contacts_area */
@@ -210,18 +214,122 @@ body{
     width: 60%;
 }
 
+/* chat_contact_bar */
+
+.chat_contact{
+    width: 250px;
+    margin-left: 20px;
+}
+
+#contact_name{
+    font-size: 14px;
+    display: inline-block;
+    color: #1b3039;
+}
+
+#last_seen{
+    font-size: 10px;
+    color: grey; 
+    display: inline-block;
+}
+
+/* message_container */
+
 .message_container{
-    height: calc(100% - 120px);
+    height: calc(100% - 135px);
     width: 100%;
     background-image: url(../img/mine.jpg);
     background-size: contain;
 }
 
-.send_msg_bar {
-    height: 50px;
+.message{
+    width: 100%;
+}
+
+.fixed_msg{
+    display: table;
+}
+
+.first_msg{
+    padding-top: 45px;
+}
+
+.sent{
+    height: 40px;
+    width: 250px;
+    margin: 5px 70px;
+    line-height: 40px;
+    border-radius: 8px;
+    float: right;
+    background-color: #D5F9BA;
+}
+
+.received{
+    width: 250px;
+    height: 40px;
+    margin: 15px 70px;
+    border-radius: 8px;
+    line-height: 40px;
+    float: left;
+    background-color: white;
+}
+
+.sent p, .received p{
+    margin-left: 12px;
+    font-size: 12px;
+    display: inline-block;
+    color: black;  
+}
+
+.sent span, .received span{
+    font-size: 8px;
+    top: 10px;
+    left: 150px;
+    position: relative;
+    color: grey;
+}
+
+/* send_message_bar */
+
+.send_msg_bar{
+    height: 65px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #F3EEE9;
+}
+
+.smile, .record{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smile i, .record i{
+    font-size: 25px;
+    cursor: pointer;
+    color: grey;
+}
+
+.type_field{
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smile i:hover, .record i:hover{
+    color: #6B7376;
+}
+
+.type_field > input{
+    width: 100%;
+    height: 60%;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
 }
