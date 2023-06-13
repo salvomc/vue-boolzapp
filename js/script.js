@@ -169,6 +169,7 @@ createApp({
             
             selectedContact : 0,
             send_message:'',
+            text_typed:'',
         }
        
     },
@@ -217,6 +218,20 @@ createApp({
                 },1000)
         },
 
+        searchContact() 
+        {
+            this.contacts.forEach((contact) => 
+            {
+              if (!contact.name.toLowerCase().includes(this.text_typed.toLowerCase())) 
+              {
+                contact.visible = false;
+              } else 
+              {
+                contact.visible = true;
+              }
+            })
+        },
+       
     },
 
 }).mount('#app');
