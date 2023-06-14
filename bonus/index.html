@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js" integrity="sha512-KKbQg5o92MwtJKR9sfm/HkREzfyzNMiKPIQ7i7SZOxwEdiNCm4Svayn2DBq7MKEdrqPJUOSIpy1v6PpFlCQ0YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="./css/style.css"/>
+        <title>Boolzapp</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="main_container">
+                <div class="left-container">
+                    <div class="user_bar user_bar_margin">
+                        <div class="user">
+                            <div class="user_img">
+                                <img src="img/avatar_io.jpg" alt="user-avatar">
+                                <p>Sofia</p>
+                            </div>
+                        </div>
+                        <div class="icons_right">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="notifications_bar">
+                        <div class="notifications_bell">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="notifications_text">
+                            <p>Ricevi notifiche di nuovi messaggi</p>
+                            <a href="#">Attiva notifiche Desktop</a>
+                        </div>
+                    </div>
+                    <div class="search_bar">
+                        <i class="fas fa-search"></i>
+                        <input @keyup="searchContact" v-model.trim="text_typed" type="text" class="search_input" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                    <div class="contacts overflow">
+                        <div v-for="(contact, index) in contacts" @click="selectContact(index)" v-show="contact.visible" class="contact_box">
+                            <div class="contact_box_img">
+                                <img :src="contacts[index].avatar" alt="contact-avatar">
+                                <div class="contact_box_name">
+                                    <p>{{contacts[index].name}}</p>
+                                    <span>{{lastMessageSent(contact)}}</span>
+                                </div>
+                            </div>
+                            <div class="date">
+                                <span>{{lastTimeOnline(contact).slice(0, 4)}}</span>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="right_container">
+                    <div class="user_bar">
+                        <div class="user">
+                            <div class="user_img">
+                                <img :src="contacts[selectedContact].avatar" alt="">
+                                <div class="chat_contact">
+                                    <span id="contact_name">{{contacts[selectedContact].name}}</span>
+                                    <span id="last_seen">Ultimo accesso oggi alle {{currentDate().slice(11, 16)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icons_right">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                    <div class="message_container">
+                        <div class="message first_msg">
+                            <div v-for="(message, index) in contacts[selectedContact].messages" class="fixed_msg" :class="contacts[selectedContact].messages[index].status === 'received' ? '': 'justify_content_end'">
+                                <div :class="contacts[selectedContact].messages[index].status === 'received' ? 'received':'sent'">
+                                <p>{{contacts[selectedContact].messages[index].message}}</p>
+                                <div class="dropdown-container">
+                                    <i class="fas fa-chevron-down dropdown-arrow" @click="dropDownToggle(index)"></i>
+                                </div>
+                            <div class="dropdown" v-show="msgIndex == index">
+                                <ul>
+                                    <li class="delete" @click="deleteMsg(index)"> 
+                                    <i class="fas fa-trash-alt"></i> Elimina messaggio
+                                    </li>
+                                </ul>
+                            </div>
+                                <span>{{message.date.slice(11, 15)}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="send_msg_bar">
+                        <div class="smile">
+                            <i class="far fa-smile"></i>
+                        </div>
+                        <div class="type_field">
+                            <input  v-model="send_message" @keyup.enter="sendMessage" type="text" placeholder="Scrivi un messaggio">
+                        </div>
+                        <div class="record">
+                            <i class="fas fa-microphone"></i>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
